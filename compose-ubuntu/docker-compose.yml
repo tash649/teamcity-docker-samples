@@ -9,7 +9,14 @@ services:
       - '/opt/teamcity/logs'
   teamcity-agent:
     image: jetbrains/teamcity-agent
+    volumes:
+      - '/data/teamcity_agent/conf'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/opt/buildagent/work:/opt/buildagent/work'
+      - '/opt/buildagent/temp:/opt/buildagent/temp'
+      - '/opt/buildagent/tools:/opt/buildagent/tool'
+      - '/opt/buildagent/plugins:/opt/buildagent/plugins'
+      - '/opt/buildagent/system:/opt/buildagent/system'
     environment:
       - SERVER_URL=http://server:8111
       - AGENT_NAME=regular_agent
-      - DOCKER_IN_DOCKER=start
