@@ -3,10 +3,10 @@ services:
   server:
     image: jetbrains/teamcity-server
     ports:
-      - "8112:8111"
+      - "8111:8111"
     volumes:
-      - ./data_dir:/data/teamcity_server/datadir
-      - ./log_dir:/opt/teamcity/logs
+      - :/data/teamcity_server/datadir
+      - :/opt/teamcity/logs
   teamcity-agent:
     image: jetbrains/teamcity-agent
     environment:
